@@ -1,0 +1,35 @@
+
+<mat-spinner *ngIf="loading" ></mat-spinner>
+<div align="center" class="div-principal">
+  <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+  <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept="text/xml" multiple>
+  <span class="file-name">{{selectedFile?.name}}</span>
+
+</div>
+<div class="div-principal">
+
+  <div *ngFor="let agente of agentes">
+
+
+    <div *ngFor="let item of agente.agente">
+      {{ 'Agente codigo: ' + item.codigo }}
+      <br>
+      {{ 'Agente data: ' + item.data }}
+
+      <div *ngFor="let regiao of item.regiao">
+        {{ 'região  sigla: ' + regiao.sigla }}
+
+        <div *ngFor="let valor of regiao.geracao.valor">
+          {{ 'geracao  valor: ' + valor }}
+        </div>
+
+        <div *ngFor="let valor of regiao.compra.valor">
+          {{ 'compra  valor: ' + valor }}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
